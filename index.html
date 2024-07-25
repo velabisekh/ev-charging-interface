@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EV Charging Station</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Include the html5-qrcode library -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+  <div id="app">
+    <div id="welcome-screen" class="screen active">
+      <h1>Welcome to EV Charging</h1>
+      <button onclick="start()">Start</button>
+    </div>
+
+    <div id="authentication-screen" class="screen">
+        <h2>Enter Account Number</h2>
+        <button onclick="startQrScanner()">Scan QR Code</button>
+        <input type="text" id="account-number" placeholder="Account Number" readonly onclick="openKeyboard('account-number')">
+        
+        <h2>Enter PIN</h2>
+        <input type="password" id="pin" placeholder="PIN" readonly onclick="openKeyboard('pin')">
+        
+        <button onclick="authenticate()">Authenticate</button>
+        <p id="auth-error" class="error"></p>
+      </div>
+  
+      <div id="qr-scanner" class="screen">
+        <h2>Scan QR Code</h2>
+        <div id="reader"></div>
+        <button onclick="stopQrScanner()">Stop Scanning</button>
+        <p id="scan-result"></p>
+      </div>
+
+    <div id="charging-details-screen" class="screen">
+      <h2>Select Vehicle Type</h2>
+      <select id="vehicle-type">
+        <option value="">Select...</option>
+        <option value="car">Car (7kw)</option>
+        <option value="ebike">E-bike (0.9kw)</option>
+        <option value="escooter">E-scooter (0.25kw)</option>
+      </select>
+
+      <h2>Select Charging Bay</h2>
+      <select id="charging-bay">
+        <option value="">Select...</option>
+        <option value="1">Bay 1</option>
+        <option value="2">Bay 2</option>
+        <option value="3">Bay 3</option>
+        <option value="4">Bay 4</option>
+        <option value="5">Bay 5</option>
+        <option value="6">Bay 6</option>
+        <option value="7">Bay 7</option>
+        <option value="8">Bay 8</option>
+        <option value="9">Bay 9</option>
+        <option value="10">Bay 10</option>
+      </select>
+
+      <h2>Select Charge Duration</h2>
+      <select id="charge-duration">
+        <option value="">Select...</option>
+      </select>
+
+      <span id="selected-duration"></span> <!-- Ensure this element exists -->
+
+      <button onclick="submitChargingDetails()">Submit</button>
+    </div>
+
+    <div id="payment-screen" class="screen">
+      <h2>Select Payment Method</h2>
+      <p>Choose your payment method:</p>
+      <button onclick="selectPayment('on-account')">On-Account Payment</button>
+      <button onclick="selectPayment('contactless')">Contactless Card</button>
+      <div id="payment-instructions" class="instructions"></div>
+    </div>
+
+    <div id="charging-info-screen" class="screen">
+      <h2>Charging...</h2>
+      <p>Time Remaining: <span id="time-remaining"></span></p>
+      <p>Power Level: <span id="power-level"></span></p>
+      <button onclick="showScreen('cancel-pin-screen')">Cancel Charging</button>
+    </div>
+
+    <!-- Cancel PIN Screen -->
+    <div id="cancel-pin-screen" class="screen">
+      <h2>Enter PIN to Cancel Charging</h2>
+      <input type="password" id="cancel-pin" placeholder="PIN" maxlength="6" readonly onclick="openKeyboard('cancel-pin')">
+      <button onclick="validateCancelPin()">Confirm</button>
+      <p id="cancel-error" class="error-message"></p>
+    </div>
+
+    <!-- Charge Complete Message -->
+  <div id="charge-complete-message" class="charge-complete-message">
+    Charging complete! Thank you for using our service.
+  </div>
+
+  <!-- Charge Canceled Message -->
+  <div id="charge-canceled-message" class="charge-canceled-message">
+    Charging session has been canceled. Please start over.
+  </div>
+
+  <div id="on-account-payment" class="screen">
+    <h2>On-Account Payment</h2>
+    <p>Enter your card details:</p>
+    <form id="on-account-form">
+      <label for="card-number">Card Number:</label>
+      <input id="card-number" type="text" placeholder="1234 5678 9012 3456" maxlength="16" readonly onclick="openKeyboard('card-number')">  
+
+      <label for="card-expiry">Expiry Date:</label>
+      <input id="card-expiry" type="text" placeholder="MM/YY" maxlength="5" readonly onclick="openKeyboard('card-expiry')">  
+
+      <label for="card-cvv">CVV:</label>
+      <input id="card-cvv" type="text" placeholder="123" maxlength="3" readonly onclick="openKeyboard('card-cvv')"> 
+
+      <button type="button" onclick="confirmOnAccountPayment()">Pay</button>
+    </form>
+    <div id="on-account-error" class="error"></div>
+  </div>
+
+  <div id="contactless-payment" class="screen">
+    <h2>Contactless Payment</h2>
+    <p>Scan the QR code with your payment app:</p>
+    <div>
+      <img id="gpay-qr-code" src="Assets/gpay-qr.png" alt="Google Pay QR Code" onclick="handleGpayQrCodeClick()">
+    </div>
+  </div>
+
+    <div id="qr-scanner" class="screen">
+      <h2>Scan QR Code</h2>
+      <div id="reader" style="width: 100%; height: 400px;"></div>
+      <button onclick="stopQrScanner()">Stop Scanning</button>
+      <p id="scan-result"></p>
+    </div>
+
+    <div id="keyboard" class="keyboard">
+      <div class="keyboard-row">
+        <button onclick="keyPress('1')">1</button>
+        <button onclick="keyPress('2')">2</button>
+        <button onclick="keyPress('3')">3</button>
+      </div>
+      <div class="keyboard-row">
+        <button onclick="keyPress('4')">4</button>
+        <button onclick="keyPress('5')">5</button>
+        <button onclick="keyPress('6')">6</button>
+      </div>
+      <div class="keyboard-row">
+        <button onclick="keyPress('7')">7</button>
+        <button onclick="keyPress('8')">8</button>
+        <button onclick="keyPress('9')">9</button>
+      </div>
+      <div class="keyboard-row">
+        <button onclick="keyPress('0')">0</button>
+        <button onclick="keyPress('backspace')">⌫</button>
+        <button onclick="keyPress('clear')">Clear</button>
+        <button onclick="keyPress('/')">/</button>
+      </div>
+      <button onclick="closeKeyboard()">Close</button>
+    </div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>  

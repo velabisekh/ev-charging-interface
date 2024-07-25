@@ -1,0 +1,565 @@
+/* General Body Styles */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Welcome Screen */
+#welcome-screen {
+  background-image: url(Assets/bg-welcomepage.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+}
+
+#welcome-screen h1 {
+  margin-top: 10%;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  font-size: 4rem; 
+  font-weight: bold;
+  letter-spacing: 3px;
+  animation: fadeInSlideUp 2s ease-in-out;
+}
+
+@keyframes fadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#welcome-screen button {
+  width: 15%; 
+  height: 8%;
+  margin-top: 20px;
+  padding: 15px 30px; 
+  font-size: 2rem;
+  background-color: #b10f2e;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#welcome-screen button:hover {
+  background-color: #a00d28;
+}
+
+#welcome-screen button:active {
+  background-color: #900c24;
+}
+
+/* Screen Elements */
+.screen {
+  display: none;
+  padding: 20px;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* Authentication Screen */
+#authentication-screen {
+  background-color: #ffffff;
+  border-radius: 15px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+  padding: 50px;
+  width: 60%;
+  max-width: 800px; /* Adjusted max-width */
+  height: auto; /* Allow height to adjust based on content */
+  text-align: center;
+  margin: 0 auto; /* Center align */
+}
+
+#authentication-screen h2 {
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+#authentication-screen input[type="text"],
+#authentication-screen input[type="password"] {
+  width: calc(100% - 22px); /* Adjust width to account for padding and borders */
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #cccccc;
+  border-radius: 8px; /* Increased border-radius */
+  font-size: 18px; /* Increased font size */
+}
+
+#authentication-screen button {
+  background-color: #b10f2e;
+  color: #ffffff;
+  padding: 15px 30px; /* Increased padding */
+  border: none;
+  border-radius: 8px; /* Increased border-radius */
+  font-size: 18px; /* Increased font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#authentication-screen button:hover {
+  background-color: #a00d28;
+}
+
+#authentication-screen button:active {
+  background-color: #900c24;
+}
+
+#authentication-screen .error {
+  color: #ff0000;
+  margin-top: 10px;
+  font-size: 16px; /* Increased font size */
+}
+
+/* QR Scanner Screen */
+#qr-scanner {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  padding: 50px;
+  width: 50%;
+  max-width: 1000px; /* Adjusted max-width */
+  height: auto;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#qr-scanner h2 {
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+#qr-scanner #reader {
+  width: 100%;
+  height: 550px; /* Increased height */
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+  display: flex;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+#qr-scanner button {
+  background-color: #b10f2e;
+  color: #ffffff;
+  padding: 15px 30px; /* Increased padding */
+  border: none;
+  border-radius: 8px; /* Increased border-radius */
+  font-size: 18px; /* Increased font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#qr-scanner button:hover {
+  background-color: #a00d28;
+}
+
+#qr-scanner button:active {
+  background-color: #900c24;
+}
+
+/* Virtual Keyboard */
+.keyboard {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(Assets/keyboard.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  border-radius: 10px; /* Increased border-radius */
+  padding: 5px;
+  width: 40%; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.keyboard.active {
+  display: block;
+}
+
+.keyboard .keyboard-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; 
+}
+
+.keyboard button {
+  background-color: #e0e0e0;
+  border: 1px solid #cccccc;
+  border-radius: 8px; 
+  margin: 0 10px; 
+  padding: 10px 20px; 
+  font-size: 20px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.keyboard button:hover {
+  background-color: #c0c0c0;
+}
+
+.keyboard button:active {
+  background-color: #b0b0b0;
+}
+
+.keyboard .close-btn {
+  background-color: #b10f2e;
+  color: #ffffff;
+  border: none;
+  padding: 15px 30px; /* Increased padding */
+  font-size: 18px; /* Increased font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 8px; /* Increased border-radius */
+}
+
+.keyboard .close-btn:hover {
+  background-color: #a00d28;
+}
+
+.keyboard .close-btn:active {
+  background-color: #900c24;
+}
+
+/* Charging Details Screen */
+#charging-details-screen {
+  background-color: #f6f3ec;
+  padding: 30px; /* Increased padding */
+  border-radius: 15px; /* Increased border-radius */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  width: 70%;
+  max-width: 900px; /* Adjusted max-width */
+  margin: 0 auto;
+}
+
+#charging-details-screen h2 {
+  color: #34343B;
+  margin-bottom: 20px;
+}
+
+#charging-details-screen select {
+  width: calc(100% - 22px); /* Adjusted width */
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Increased border-radius */
+  font-size: 18px; /* Increased font size */
+}
+
+/* Submit Button */
+#charging-details-screen button {
+  background-color: #b10f2e;
+  color: white;
+  padding: 15px 30px; /* Increased padding */
+  border: none;
+  border-radius: 8px; /* Increased border-radius */
+  font-size: 18px; /* Increased font size */
+  cursor: pointer;
+}
+
+#charging-details-screen button:hover {
+  background-color: #920d26;
+}
+
+/* Selected Duration Display */
+#selected-duration {
+  color: #1D1915;
+  font-size: 20px; /* Increased font size */
+  margin-top: 10px;
+}
+
+/* Payment Screen Styling */
+#payment-screen {
+  background-color: #f6f3ec;
+  padding: 30px; /* Increased padding */
+  border-radius: 15px; /* Increased border-radius */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  width: 70%;
+  max-width: 900px; /* Adjusted max-width */
+  margin: 0 auto;
+}
+
+#payment-screen h2 {
+  color: #34343B;
+  margin-bottom: 20px;
+}
+
+#payment-screen button {
+  background-color: #b10f2e;
+  color: white;
+  padding: 15px 30px; /* Increased padding */
+  border: none;
+  border-radius: 8px; /* Increased border-radius */
+  font-size: 18px; /* Increased font size */
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#payment-screen button:hover {
+  background-color: #920d26;
+}
+
+/* Payment Instructions */
+#payment-instructions {
+  color: #1D1915;
+  font-size: 20px; /* Increased font size */
+  margin-top: 20px;
+}
+
+/* On-Account Payment Form */
+#on-account-payment {
+  background-color: #f6f3ec;
+  padding: 30px; /* Increased padding */
+  border-radius: 15px; /* Increased border-radius */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  width: 70%;
+  max-width: 900px; /* Adjusted max-width */
+  margin: 0 auto;
+}
+
+#on-account-payment form {
+  display: flex;
+  flex-direction: column;
+}
+
+#on-account-payment label {
+  margin-bottom: 10px; /* Increased margin */
+  color: #34343B;
+  font-size: 16px; /* Increased font size */
+  text-align: left;
+}
+
+#on-account-payment input[type="text"],
+#on-account-payment input[type="password"] {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Increased border-radius */
+  font-size: 18px; /* Increased font size */
+  background-color: #fff;
+  color: #1D1915;
+}
+
+#on-account-payment button {
+  background-color: #b10f2e;
+  color: white;
+  padding: 15px 30px; /* Increased padding */
+  border: none;
+  border-radius: 8px; /* Increased border-radius */
+  font-size: 18px; /* Increased font size */
+  cursor: pointer;
+}
+
+#on-account-payment button:hover {
+  background-color: #920d26;
+}
+
+/* Error Message Styling */
+#error {
+  color: #b10f2e;
+  margin-top: 10px;
+  font-size: 16px; /* Increased font size */
+}
+
+/* Google Pay QR Code Section */
+#contactless-payment {
+  background-color: #f6f3ec;
+  padding: 30px; /* Increased padding */
+  border-radius: 15px; /* Increased border-radius */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  width: 70%;
+  max-width: 900px; /* Adjusted max-width */
+  margin: 0 auto;
+}
+
+#contactless-payment img {
+  width: 300px; /* Increased width */
+  height: auto;
+  margin-top: 20px;
+}
+
+#contactless-payment p {
+  color: #1D1915;
+  font-size: 20px; /* Increased font size */
+}
+
+/* Charging Session Screen Styling */
+#charging-info-screen {
+  background-color: #f6f3ec;
+  padding: 30px; /* Increased padding */
+  border-radius: 15px; /* Increased border-radius */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  width: 70%;
+  max-width: 900px; /* Adjusted max-width */
+  margin: 0 auto;
+}
+
+#charging-info-screen h2 {
+  color: #34343B;
+  margin-bottom: 20px;
+}
+
+#charging-info-screen p {
+  color: #1D1915;
+  font-size: 20px; /* Increased font size */
+  margin: 10px 0;
+}
+
+#time-remaining,
+#power-level {
+  font-weight: bold;
+}
+
+/* Cancel Charging Button */
+#charging-info-screen button {
+  background-color: #b10f2e;
+  color: white;
+  padding: 15px 30px; /* Increased padding */
+  border: none;
+  border-radius: 8px; /* Increased border-radius */
+  font-size: 18px; /* Increased font size */
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#charging-info-screen button:hover {
+  background-color: #920d26;
+}
+
+/* Cancel PIN Screen Styling */
+#cancel-pin-screen {
+  background-color: #f6f3ec;
+  padding: 30px; /* Increased padding */
+  border-radius: 15px; /* Increased border-radius */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  width: 70%;
+  max-width: 900px; /* Adjusted max-width */
+  margin: 0 auto;
+}
+
+#cancel-pin-screen h2 {
+  color: #34343B;
+  margin-bottom: 20px;
+}
+
+#cancel-pin-screen input {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Increased border-radius */
+  font-size: 18px; /* Increased font size */
+  background-color: #fff;
+  color: #1D1915;
+  width: calc(100% - 22px); /* Adjusted width */
+}
+
+#cancel-pin-screen button {
+  background-color: #b10f2e;
+  color: white;
+  padding: 15px 30px; /* Increased padding */
+  border: none;
+  border-radius: 8px; /* Increased border-radius */
+  font-size: 18px; /* Increased font size */
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#cancel-pin-screen button:hover {
+  background-color: #920d26;
+}
+
+#cancel-pin-screen .error-message {
+  color: #b10f2e;
+  margin-top: 10px;
+  font-size: 16px; /* Increased font size */
+}
+
+/* Charge Complete Message */
+.charge-complete-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #28a745;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 2rem; /* Increased font size */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  z-index: 1000;
+  display: none;
+}
+
+.charge-complete-message.show {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.charge-complete-message.show {
+  animation: fadeIn 1s ease-out;
+}
+
+/* Charge Canceled Message */
+.charge-canceled-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #dc3545;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 2rem; /* Increased font size */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  z-index: 1000;
+  display: none;
+}
+
+.charge-canceled-message.show {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.charge-canceled-message.show {
+  animation: fadeIn 1s ease-out;
+}
