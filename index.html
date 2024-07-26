@@ -18,10 +18,10 @@
     <div id="authentication-screen" class="screen">
         <h2>Enter Account Number</h2>
         <button onclick="startQrScanner()">Scan QR Code</button>
-        <input type="text" id="account-number" placeholder="Account Number" readonly onclick="openKeyboard('account-number')">
+        <input type="text" id="account-number" placeholder="10 Digit Account Number" readonly onclick="openKeyboard('account-number')">
         
         <h2>Enter PIN</h2>
-        <input type="password" id="pin" placeholder="PIN" readonly onclick="openKeyboard('pin')">
+        <input type="password" id="pin" placeholder="6 Digit PIN" readonly onclick="openKeyboard('pin')">
         
         <button onclick="authenticate()">Authenticate</button>
         <p id="auth-error" class="error"></p>

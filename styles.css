@@ -563,3 +563,156 @@ body {
 .charge-canceled-message.show {
   animation: fadeIn 1s ease-out;
 }
+
+/* Small devices (phones, less than 600px) */
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  #welcome-screen h1 {
+    font-size: 2rem;
+  }
+
+  #welcome-screen button {
+    width: 70%;
+    height: auto;
+    font-size: 1rem;
+  }
+
+  #authentication-screen, #qr-scanner, #charging-details-screen, #payment-screen, #on-account-payment, #contactless-payment, #charging-info-screen, #cancel-pin-screen {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .keyboard {
+    width: 90%;
+  }
+
+  #qr-scanner #reader {
+    height: 300px;
+  }
+
+  #charging-info-screen p, #payment-instructions, #selected-duration {
+    font-size: 1rem;
+  }
+
+  #on-account-payment input, #on-account-payment button {
+    font-size: 1rem;
+  }
+}
+
+/* Medium devices (tablets, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  #welcome-screen h1 {
+    font-size: 3rem;
+  }
+
+  #welcome-screen button {
+    width: 50%;
+    height: auto;
+    font-size: 1.5rem;
+  }
+
+  #authentication-screen, #qr-scanner, #charging-details-screen, #payment-screen, #on-account-payment, #contactless-payment, #charging-info-screen, #cancel-pin-screen {
+    width: 80%;
+    padding: 30px;
+  }
+
+  .keyboard {
+    width: 80%;
+  }
+
+  #qr-scanner #reader {
+    height: 400px;
+  }
+
+  #charging-info-screen p, #payment-instructions, #selected-duration {
+    font-size: 1.2rem;
+  }
+
+  #on-account-payment input, #on-account-payment button {
+    font-size: 1.2rem;
+  }
+}
+
+/* Large devices (desktops, 768px and up) */
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
+  #welcome-screen h1 {
+    font-size: 4rem;
+  }
+
+  #welcome-screen button {
+    width: 30%;
+    height: auto;
+    font-size: 2rem;
+  }
+
+  #authentication-screen, #qr-scanner, #charging-details-screen, #payment-screen, #on-account-payment, #contactless-payment, #charging-info-screen, #cancel-pin-screen {
+    width: 60%;
+    padding: 40px;
+  }
+
+  .keyboard {
+    width: 60%;
+  }
+
+  #qr-scanner #reader {
+    height: 500px;
+  }
+
+  #charging-info-screen p, #payment-instructions, #selected-duration {
+    font-size: 1.5rem;
+  }
+
+  #on-account-payment input, #on-account-payment button {
+    font-size: 1.5rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  body {
+    font-size: 20px;
+  }
+
+  #welcome-screen h1 {
+    font-size: 5rem;
+  }
+
+  #welcome-screen button {
+    width: 20%;
+    height: auto;
+    font-size: 2.5rem;
+  }
+
+  #authentication-screen, #qr-scanner, #charging-details-screen, #payment-screen, #on-account-payment, #contactless-payment, #charging-info-screen, #cancel-pin-screen {
+    width: 50%;
+    padding: 50px;
+  }
+
+  .keyboard {
+    width: 50%;
+  }
+
+  #qr-scanner #reader {
+    height: 600px;
+  }
+
+  #charging-info-screen p, #payment-instructions, #selected-duration {
+    font-size: 1.8rem;
+  }
+
+  #on-account-payment input, #on-account-payment button {
+    font-size: 1.8rem;
+  }
+}
+
